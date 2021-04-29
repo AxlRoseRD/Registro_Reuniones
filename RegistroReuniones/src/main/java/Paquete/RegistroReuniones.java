@@ -39,6 +39,10 @@ public class RegistroReuniones extends javax.swing.JFrame {
         Tabla tablita = new Tabla();
         tablita.show();
     }
+              private void Buscador() {
+        Buscador b = new Buscador();
+        b.show();
+    }
           public void imagenSubmenu()//metodo para cargar la imagen que sobre pone elmenu principal
     {
         System.out.println("imagen Sub menu activada");
@@ -46,7 +50,7 @@ public class RegistroReuniones extends javax.swing.JFrame {
        marcoImagen.setBounds(-195, -120, 720, 480);
        pizzarraMenu.add(marcoImagen);   
     }
-          
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,6 +85,11 @@ public class RegistroReuniones extends javax.swing.JFrame {
 
         listaR.setBackground(new java.awt.Color(153, 255, 255));
         listaR.setText("Buscar reunion");
+        listaR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaRActionPerformed(evt);
+            }
+        });
 
         info.setBackground(new java.awt.Color(153, 255, 255));
         info.setText("Info del software");
@@ -163,6 +172,11 @@ public class RegistroReuniones extends javax.swing.JFrame {
         // TODO add your handling code here:
         Tablas();
     }//GEN-LAST:event_nuevaReunionActionPerformed
+
+    private void listaRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaRActionPerformed
+        // TODO add your handling code here:
+        Buscador();
+    }//GEN-LAST:event_listaRActionPerformed
 
     /**
      * @param args the command line arguments

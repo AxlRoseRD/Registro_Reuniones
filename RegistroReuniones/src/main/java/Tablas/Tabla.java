@@ -178,7 +178,7 @@ private void editar() {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jtReuniones.setBackground(new java.awt.Color(255, 255, 204));
+        jtReuniones.setBackground(new java.awt.Color(255, 204, 204));
         jtReuniones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
