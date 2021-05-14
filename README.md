@@ -3,10 +3,11 @@ una aplicacion de escritorio que registra reuniones en una base de datos, puedes
 
 agrega las sigientes lineas al archivo "Pom.xml" para agregar la dependencia a my SQL
 
-
-<dependency>
-  <groupId>mysql</groupId>
-  <artifactId>mysql-connector-java</artifactId>
-  <version>8.0.24</version>
-</dependency>
+<dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.24</version>
+        </dependency>
+    </dependencies>
 
