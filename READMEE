@@ -1,8 +1,0 @@
-agrega las sigientes lineas al archivo "Pom.xml" para agregar la dependencia a my SQL
-
-
-<dependency>
-  <groupId>mysql</groupId>
-  <artifactId>mysql-connector-java</artifactId>
-  <version>8.0.24</version>
-</dependency>
