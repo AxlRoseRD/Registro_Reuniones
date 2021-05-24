@@ -25,7 +25,7 @@ public class NuevaReunion extends javax.swing.JFrame {
     Reuniones reunion = new Reuniones();
 
     Conectar Con = new Conectar();
-    Connection cn = Con.conexion("root", "Axcell2015");
+    Connection cn = Con.conexion("root", "");
 
     Edicion editor = new Edicion();
 
