@@ -11,3 +11,4 @@ agrega las sigientes lineas al archivo "Pom.xml" para agregar la dependencia a m
         </dependency>
     </dependencies>
 
+el archivo Reuniones.sql es la base de datos en la cual trabaja el proyecto
