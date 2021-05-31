@@ -59,6 +59,7 @@ public class MainMenu extends javax.swing.JFrame {
         imagenMenu.setBackground(new java.awt.Color(255, 51, 51));
 
         jButton1.setText("Nueva reunion");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -66,6 +67,7 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         jButton2.setText("Informacion");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -73,6 +75,7 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         jButton3.setText("Buscar reunion");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

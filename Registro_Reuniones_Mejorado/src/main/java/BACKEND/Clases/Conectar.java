@@ -20,7 +20,7 @@ public class Conectar {
         try {
             //1. conexion
             Connection cn = //recuerden poner el usuario y clave de su host
-            DriverManager.getConnection("jdbc:mysql://localhost:3306/Reuniones", "root", "");
+            DriverManager.getConnection("jdbc:mysql://localhost:3306/Reuniones", "root", "Axcell2015");
             
             n = cn;
             System.out.println("se ha concectado exitosamente");

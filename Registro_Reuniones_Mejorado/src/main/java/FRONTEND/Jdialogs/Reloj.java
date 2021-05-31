@@ -22,8 +22,11 @@ public class Reloj extends javax.swing.JDialog {
     public String validarHora() {
         String h = (String) sHora.getSelectedItem();
         String m = (String) sMinuto.getSelectedItem();
-        
-        String hora = h +":" +m +":" +"00";
+
+        hr.setText(h);
+        mn.setText(m);
+
+        String hora = h + ":" + m + ":" + "00";
         return hora;
     }
 
@@ -38,9 +41,9 @@ public class Reloj extends javax.swing.JDialog {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        mn = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        hr = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         sHora = new javax.swing.JComboBox<>();
         sMinuto = new javax.swing.JComboBox<>();
@@ -56,17 +59,17 @@ public class Reloj extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 255, 0));
-        jLabel1.setText("00");
+        mn.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        mn.setForeground(new java.awt.Color(0, 255, 0));
+        mn.setText("00");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 255, 0));
         jLabel2.setText(":");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 255, 0));
-        jLabel3.setText("00");
+        hr.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        hr.setForeground(new java.awt.Color(0, 255, 0));
+        hr.setText("00");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -74,11 +77,11 @@ public class Reloj extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel3)
+                .addComponent(hr)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
+                .addComponent(mn)
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -87,12 +90,13 @@ public class Reloj extends javax.swing.JDialog {
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1))
+                    .addComponent(hr)
+                    .addComponent(mn))
                 .addGap(19, 19, 19))
         );
 
         jButton1.setText("Listo");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -100,8 +104,20 @@ public class Reloj extends javax.swing.JDialog {
         });
 
         sHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+        sHora.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        sHora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sHoraActionPerformed(evt);
+            }
+        });
 
         sMinuto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        sMinuto.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        sMinuto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sMinutoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("minuto");
 
@@ -167,15 +183,25 @@ public class Reloj extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void sHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sHoraActionPerformed
+        String h = (String) sHora.getSelectedItem();
+        hr.setText(h);
+    }//GEN-LAST:event_sHoraActionPerformed
+
+    private void sMinutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMinutoActionPerformed
+        String m = (String) sMinuto.getSelectedItem();
+        mn.setText(m);
+    }//GEN-LAST:event_sMinutoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel hr;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel mn;
     private javax.swing.JComboBox<String> sHora;
     private javax.swing.JComboBox<String> sMinuto;
     // End of variables declaration//GEN-END:variables
