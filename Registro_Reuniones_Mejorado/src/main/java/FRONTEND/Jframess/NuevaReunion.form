@@ -297,12 +297,24 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="hiField">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="hiFieldMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="lugarField">
         </Component>
         <Component class="javax.swing.JTextField" name="notasField">
         </Component>
         <Component class="javax.swing.JTextField" name="fhField">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="fhFieldMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="id">
           <Properties>

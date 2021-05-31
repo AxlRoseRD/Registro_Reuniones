@@ -8,6 +8,7 @@ package FRONTEND.Jframess;
 import BACKEND.Clases.*;
 import FRONTEND.Imagenes.Imagen;
 import FRONTEND.Jdialogs.Calendario;
+import FRONTEND.Jdialogs.Reloj;
 import java.sql.*;
 import java.util.*;
 import javax.swing.*;
@@ -25,7 +26,7 @@ public class NuevaReunion extends javax.swing.JFrame {
     Reuniones reunion = new Reuniones();
 
     Conectar Con = new Conectar();
-    Connection cn = Con.conexion("root", "Axcell2015");
+    Connection cn = Con.conexion();
 
     Edicion editor = new Edicion();
 
@@ -102,19 +103,27 @@ public class NuevaReunion extends javax.swing.JFrame {
         hiField.setText("");
         fhField.setText("");
         lugarField.setText("");
-        notasField.setText("");       
+        notasField.setText("");
         guardar = 0;
     }
 
-    private void validarFecha() {
+    private void fecha() {
         try {
             Calendario c = new Calendario(this, true);
             c.show();
-            fechaField.setText(c.Fecha());
+            fechaField.setText(c.validarFecha());
         } catch (Exception a) {
             JOptionPane.showMessageDialog(null, "Introduzca datos validos, no sea imbecil");
-            validarFecha();
+            fecha();
         }
+    }
+
+    private String hora() {
+        Reloj r = new Reloj(this, true);
+        r.show();
+
+        String time = r.validarHora();
+        return time;
     }
 
     /**
@@ -200,6 +209,20 @@ public class NuevaReunion extends javax.swing.JFrame {
         fechaField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fechaFieldMouseClicked(evt);
+            }
+        });
+
+        hiField.setEditable(false);
+        hiField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hiFieldMouseClicked(evt);
+            }
+        });
+
+        fhField.setEditable(false);
+        fhField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fhFieldMouseClicked(evt);
             }
         });
 
@@ -353,13 +376,13 @@ public class NuevaReunion extends javax.swing.JFrame {
             case 1:
                 reunion.setID(Integer.parseInt(id.getText()));
                 cargarDatos();
-                
+
                 editor.actualizar(reunion);
                 crearTabla();
 
                 limpiarCeldas();
                 guardar = 0;
-                
+
                 break;
 
             default:
@@ -401,7 +424,7 @@ public class NuevaReunion extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "no selecciono fila");
         }
-        
+
         guardar = 1;
     }//GEN-LAST:event_tablaDatosMouseClicked
 
@@ -410,8 +433,16 @@ public class NuevaReunion extends javax.swing.JFrame {
     }//GEN-LAST:event_mLimpiarActionPerformed
 
     private void fechaFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechaFieldMouseClicked
-        validarFecha();
+        fecha();
     }//GEN-LAST:event_fechaFieldMouseClicked
+
+    private void hiFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiFieldMouseClicked
+        hiField.setText(hora());
+    }//GEN-LAST:event_hiFieldMouseClicked
+
+    private void fhFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fhFieldMouseClicked
+        fhField.setText(hora());
+    }//GEN-LAST:event_fhFieldMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

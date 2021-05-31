@@ -7,7 +7,6 @@ package FRONTEND.Jdialogs;
 
 import java.util.Calendar;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author Axcell Espinal
@@ -24,7 +23,7 @@ public class Calendario extends javax.swing.JDialog {
         initComponents();     
     }
 
-    public String Fecha() {
+    public String validarFecha() {
         String dia = Integer.toString(jDateChooser1.getCalendar().get(Calendar.DAY_OF_MONTH));
         String mes = Integer.toString(jDateChooser1.getCalendar().get(Calendar.MONTH) + 1);
         String year = Integer.toString(jDateChooser1.getCalendar().get(Calendar.YEAR));

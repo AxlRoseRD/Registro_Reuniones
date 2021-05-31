@@ -16,11 +16,11 @@ public class Conectar {
          
    Connection n;
 
-    public Connection conexion(String usuario, String password){
+    public Connection conexion(){
         try {
             //1. conexion
             Connection cn = //recuerden poner el usuario y clave de su host
-            DriverManager.getConnection("jdbc:mysql://localhost:3306/Reuniones", usuario, password);
+            DriverManager.getConnection("jdbc:mysql://localhost:3306/Reuniones", "root", "");
             
             n = cn;
             System.out.println("se ha concectado exitosamente");

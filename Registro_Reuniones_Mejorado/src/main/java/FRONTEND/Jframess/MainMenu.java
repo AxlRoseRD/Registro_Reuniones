@@ -6,8 +6,8 @@
 package FRONTEND.Jframess;
 
 import FRONTEND.Imagenes.Imagen;
-import FRONTEND.Jdialogs.Informacion;
-import java.awt.Toolkit;
+import FRONTEND.Jdialogs.*;
+import java.awt.*;
 import javax.swing.*;
 
 /**
@@ -15,7 +15,7 @@ import javax.swing.*;
  * @author Axcell Espinal
  */
 public class MainMenu extends javax.swing.JFrame {
-
+    int numeros = 0;
     /**
      * Creates new form MainMenu
      */
@@ -29,6 +29,7 @@ public class MainMenu extends javax.swing.JFrame {
         Imagen F = new Imagen();
         F.getAll("escritorio.jpg", 0, -10, 650, 420);
         F.cargarImagen(imagenFondo);
+        
     }
 
     /**

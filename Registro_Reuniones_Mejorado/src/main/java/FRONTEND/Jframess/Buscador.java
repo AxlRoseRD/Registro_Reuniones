@@ -18,7 +18,7 @@ public class Buscador extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
     Conectar Con = new Conectar();
-    Connection cn = Con.conexion("root", "Axcell2015");
+    Connection cn = Con.conexion();
     Statement st;
 
     /**
@@ -100,13 +100,14 @@ public class Buscador extends javax.swing.JFrame {
             String[] fila = new String[7];
             while (rs.next()) {
                 System.out.println(incremento);
-
-                fila[0] = rs.getString("eventName");
-                fila[1] = rs.getString("eventDate");
-                fila[2] = rs.getString("startTime");
-                fila[3] = rs.getString("endTime");
-                fila[4] = rs.getString("eventPlace");
-                fila[5] = rs.getString("eventDetails");
+                
+                fila[0] = rs.getString("Id");
+                fila[1] = rs.getString("eventName");
+                fila[2] = rs.getString("eventDate");
+                fila[3] = rs.getString("startTime");
+                fila[4] = rs.getString("endTime");
+                fila[5] = rs.getString("eventPlace");
+                fila[6] = rs.getString("eventDetails");
 
                 incremento++;
 
