@@ -5,6 +5,7 @@
  */
 package FRONTEND.Jframess;
 
+import BACKEND.Clases.Conectar;
 import FRONTEND.Imagenes.Imagen;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
@@ -16,6 +17,9 @@ import javax.swing.table.DefaultTableModel;
 public class Buscador extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
+    Conectar Con = new Conectar();
+    Connection cn = Con.conexion("root", "Axcell2015");
+    Statement st;
 
     /**
      * Creates new form Buscador
@@ -26,7 +30,7 @@ public class Buscador extends javax.swing.JFrame {
         Imagen F = new Imagen();
         F.getAll("meet.png", 0, -15, 810, 455);
         F.cargarImagen(jPanel1);
-        
+
         crearTabla();
     }
 
@@ -50,6 +54,69 @@ public class Buscador extends javax.swing.JFrame {
         jTable1.setModel(modelo);
     }
 
+    private String indice(int index) {
+        String retornar = "";
+
+        switch (index) {
+            case 0:
+                retornar = "eventName";
+                break;
+                
+            case 1:
+                retornar = "eventDate";
+                break;
+                
+            case 2:
+                retornar = "startTime";
+                break;
+                
+            case 3:
+                retornar = "endTime";
+                break;
+                
+            case 4:
+                retornar = "eventPlace";
+                break;               
+        }
+        return retornar;
+    }
+
+    private void buscador(String texto, String filtro) {
+        try {
+
+            //crear la sentencia SQL
+            String busqueda = "%" + texto + "%";
+            String SQL = "select * from eventos where " + filtro + " like" + '"' + busqueda + '"';
+            System.out.println("se creo la sentencia");
+            System.out.println(SQL);
+
+            //Ejecutar la sentencia
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(SQL);
+            System.out.println("se ejecuto la sentencia");
+
+            //Ordenar los valores
+            int incremento = 1;
+            String[] fila = new String[7];
+            while (rs.next()) {
+                System.out.println(incremento);
+
+                fila[0] = rs.getString("eventName");
+                fila[1] = rs.getString("eventDate");
+                fila[2] = rs.getString("startTime");
+                fila[3] = rs.getString("endTime");
+                fila[4] = rs.getString("eventPlace");
+                fila[5] = rs.getString("eventDetails");
+
+                incremento++;
+
+                modelo.addRow(fila);
+            }
+        } catch (Exception e) {
+            System.err.println("" + e.getMessage());
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,9 +130,9 @@ public class Buscador extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        buscar = new javax.swing.JButton();
         volver = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        filtro = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,6 +141,7 @@ public class Buscador extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 255, 102));
 
+        jTable1.setBackground(new java.awt.Color(153, 204, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -87,10 +155,10 @@ public class Buscador extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buscarActionPerformed(evt);
             }
         });
 
@@ -101,7 +169,7 @@ public class Buscador extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Fecha", "Lugar", "Hora de inicio", "Hora final" }));
+        filtro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Fecha", "Hora de inicio", "Hora final", "Lugar" }));
 
         jLabel1.setText("Filtrar por:");
 
@@ -117,12 +185,12 @@ public class Buscador extends javax.swing.JFrame {
                         .addGap(13, 13, 13)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jTextField1)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(buscar)
                         .addGap(18, 18, 18)
                         .addComponent(volver)))
                 .addContainerGap())
@@ -133,11 +201,11 @@ public class Buscador extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
+                    .addComponent(buscar)
                     .addComponent(volver))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,14 +233,14 @@ public class Buscador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        buscador(jTextField1.getText(), indice(filtro.getSelectedIndex()));
+    }//GEN-LAST:event_buscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton buscar;
+    private javax.swing.JComboBox<String> filtro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

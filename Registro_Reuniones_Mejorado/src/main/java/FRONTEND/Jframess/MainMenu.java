@@ -7,6 +7,7 @@ package FRONTEND.Jframess;
 
 import FRONTEND.Imagenes.Imagen;
 import FRONTEND.Jdialogs.Informacion;
+import java.awt.Toolkit;
 import javax.swing.*;
 
 /**
@@ -20,7 +21,7 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {
         initComponents();
-
+      
         Imagen M = new Imagen();
         M.getAll("pizarra.jpg", -208, -120, 750, 480);
         M.cargarImagen(imagenMenu);
@@ -50,8 +51,6 @@ public class MainMenu extends javax.swing.JFrame {
         setTitle("Registro de reuniones");
         setBackground(new java.awt.Color(153, 153, 153));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setIconImage(getIconImage());
-        setIconImages(getIconImages());
         setResizable(false);
 
         imagenFondo.setBackground(new java.awt.Color(102, 255, 102));
