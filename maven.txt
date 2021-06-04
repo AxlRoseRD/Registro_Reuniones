@@ -10,7 +10,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>BACKEND.Clases.Principal</mainClass>
+                            <mainClass>FRONTEND.Jframess.MainMenu</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
