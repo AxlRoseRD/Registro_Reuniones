@@ -15,13 +15,15 @@ import javax.swing.*;
  * @author Axcell Espinal
  */
 public class MainMenu extends javax.swing.JFrame {
+
     int numeros = 0;
+
     /**
      * Creates new form MainMenu
      */
     public MainMenu() {
         initComponents();
-      
+
         Imagen M = new Imagen();
         M.getAll("pizarra.jpg", -208, -120, 750, 480);
         M.cargarImagen(imagenMenu);
@@ -29,7 +31,7 @@ public class MainMenu extends javax.swing.JFrame {
         Imagen F = new Imagen();
         F.getAll("escritorio.jpg", 0, -10, 650, 420);
         F.cargarImagen(imagenFondo);
-        
+
     }
 
     /**
@@ -149,23 +151,6 @@ public class MainMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        NuevaReunion nr = new NuevaReunion();
-        nr.show();
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Informacion info = new Informacion(this, true);
-        info.show();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Buscador b = new Buscador();
-        b.show();
-        this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -201,6 +186,22 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
     }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        NuevaReunion nr = new NuevaReunion();
+        nr.show();
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Informacion info = new Informacion(this, true);
+        info.show();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Buscador b = new Buscador();
+        b.show();
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel imagenFondo;

@@ -32,7 +32,6 @@ public class Imagen {
     }
 
     public void cargarImagen(JPanel contenedor) {
-        System.out.println("imagen "+NombreA +" cargada exitosamente");
         JLabel cImagen = new JLabel(new ImageIcon("src/main/java/FRONTEND/Imagenes/" + NombreA));
         cImagen.setBounds(X, Y, Height, Width);
         contenedor.add(cImagen);
