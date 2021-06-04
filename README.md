@@ -20,3 +20,6 @@ el archivo Reuniones.sql es la base de datos en la cual trabaja el proyecto
 -
 -con este articulo pude solucionar el problema de la dependencia de la base de datos:
 https://juandyb.com/crear-un-paquete-jar-ejecutable-con-las-dependencias-incluidas-usando-maven/
+
+repositorios para maven:
+https://mvnrepository.com
