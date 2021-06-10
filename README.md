@@ -23,3 +23,6 @@ https://juandyb.com/crear-un-paquete-jar-ejecutable-con-las-dependencias-incluid
 
 repositorios para maven:
 https://mvnrepository.com
+
+
+@hecho en NetBeans
